@@ -1,0 +1,23 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.home-image {
+    width: 100%;
+    height: 85vh;
+    // opacity: 0.8;
+}
+
+.about-image {
+    height: 85vh;
+}
+
+.footer-div {
+    background-color: #F8F9FA;
+    height: 8vh;
+}
+
+.footer, .navbar {
+    font-family: 'Oleo Script', cursive;
+}
