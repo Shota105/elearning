@@ -21,5 +21,8 @@
     <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
+
+  <%= debug session[:user_id] if Rails.env == 'development' %>
+
   </body>
 </html>
