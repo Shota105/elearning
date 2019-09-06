@@ -3,6 +3,7 @@
 one:
   first_name: MyString
   last_name: MyString
+  email: MyString
   password_digest: MyString
   image: MyString
   admin: false
@@ -10,6 +11,7 @@ one:
 two:
   first_name: MyString
   last_name: MyString
+  email: MyString
   password_digest: MyString
   image: MyString
   admin: false

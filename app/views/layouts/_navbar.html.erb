@@ -16,8 +16,12 @@
         </li>
       </ul>
       <ul class="navbar-nav">
-          <%= link_to 'Sign-Up', "#", class: "nav-item nav-link" %>
-          <%= link_to 'Log-In', "#", class: "nav-item nav-link" %>
+        <% if logged_in? %>
+          <%= link_to 'Log-Out', session_path(current_user), method: :delete, class: "nav-item nav-link" %>
+        <% else %>
+          <%= link_to 'Sign-Up', signup_path, class: "nav-item nav-link" %>
+          <%= link_to 'Log-In', login_path, class: "nav-item nav-link" %>
+        <% end %>
       </ul>
     </div>
   </div>
