@@ -14,7 +14,7 @@
     <%= render 'layouts/navbar' %>
     <% if flash.any? %>
       <% flash.each do |type,msg| %>
-        <div class="alert alert- container<%= type %>">
+        <div class="alert alert-primary container"<%= type %>>
           <div><%= msg %></div>
         </div>
       <% end %>

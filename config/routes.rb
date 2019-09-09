@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :users, except: :new do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create,:destroy]
+  get 'relationships/create'
+  get 'relationships/delete'
+  get 'create/delete'
   get '/login', to: 'sessions#new'
   resources :users, except: :new
   resources :sessions, only: [:create, :destroy]
