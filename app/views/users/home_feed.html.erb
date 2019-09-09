@@ -20,11 +20,11 @@
                 <div class="row pt-3">
                     <div class="col-4 border">
                         <p>Following</p>
-                        <p><%= link_to current_user.following.count, following_user_path(current_user) %></p>
+                        <p><%= link_to current_user.following.count, following_user_path(current_user), class: "follow-text" %></p>
                     </div>
                     <div class="col-4 border">
                         <p>Followers</p>
-                        <p><%= link_to current_user.followers.count, followers_user_path(current_user) %></p>
+                        <p><%= link_to current_user.followers.count, followers_user_path(current_user), class: "follow-text" %></p>
                     </div>
                     <div class="col-4 border">
                         <p>Lank</p>
