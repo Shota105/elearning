@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid p-0 mt-4 shadow col-8 offset-2">
   <div class="">
     <div class="w-100 m-0 position-relative">
-        <% if @user.image == nil %>
+        <% if @user.image.blank? %>
             <%= image_tag "home_image.jpg", class: "w-100 profile-back-image" %>
         <% else %>
             <%= image_tag @user.image_url, class: "w-100 profile-back-image" %>
