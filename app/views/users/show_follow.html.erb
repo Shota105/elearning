@@ -1,48 +1,34 @@
-<div class="row">
-    <div class="col-md-4">
-        <div class="card mb-3">
-            <div class="card-body text-center">
+<div class="container mt-3">
+    <div class="row">
+        <div class="row col-12 text-center mb-0">
+            <div class="col-4 profile-left pt-4 mb-0 profile-follow mr-1">
                 <%= image_tag @user.gravatar_url, class: "profile-image" %>
-
-                <h1><%= "#{@user.first_name} #{@user.first_name}" %></h1>
-                <%= @user.email %>
-
-                <hr />
+                <p class="pt-3"><%= "#{@user.first_name} #{@user.last_name}" %></p>
                 <%= render 'follow_form' %> 
-                <hr />
-                
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h4>Following</h4>
-                        <span><%= link_to @user.following.count, following_user_path(@user) %></span>
+                <div class="row pt-3">
+                    <div class="col-4 border">
+                        <p>Following</p>
+                        <p><%= link_to @user.following.count, following_user_path(@user) %></p>
                     </div>
-                    <div class="col-lg-6">
-                        <h4>Followers</h4>
-                        <span><%= link_to @user.followers.count, followers_user_path(@user) %></span>
+                    <div class="col-4 border">
+                        <p>Followers</p>
+                        <p><%= link_to @user.followers.count, followers_user_path(@user) %></p>
+                    </div>
+                    <div class="col-4 border">
+                        <p>Lank</p>
+                        <p>100</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <%= @title %>
-            </div>
-            <div class="card-body">
+        
+            <div class="row col-8">
                 <% @users.each do |user| %>
-                    <div class="media mt-2">
-                        <%= image_tag @user.gravatar_url, class: "profile-image" %>
-                     <div class="media-body ml-2">
-                        <%= "#{user.first_name} #{user.last_name}" %>
-                     </div>
+                    <div class="col-4 text-center p-2 mt-2 mb-2 border-bottom">
+                        <%= link_to image_tag(user.gravatar_url, class: "profile-image"), user %>
+                        <p><%= "#{user.first_name} #{user.last_name}" %></p>
                     </div>
-                    <hr /> 
                 <% end %>
-            </div>
-            <div class="text-center m-2">
-                <%= will_paginate %>
+                <%= will_paginate @users %>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :last_name, presence: true
     validates :email, presence: true
     validates :password, presence: true,
-                                length: { minimum: 8}
+                                length: { minimum: 8}, allow_nil: true
 
     has_many :active_relationships, class_name: "Relationship",
                                     foreign_key: "follower_id",
