@@ -11,14 +11,16 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
-    <% if flash.any? %>
-      <% flash.each do |type,msg| %>
-        <div class="alert alert-<%= type %>">
-          <div><%= msg %></div>
-        </div>
+    <div class="positon-relative">
+      <%= render 'layouts/navbar' %>
+      <% if flash.any? %>
+        <% flash.each do |type, msg| %>
+            <div class="w-100 alert-div position-absolute alert alert-<%= type %>">
+              <div><%= msg %></div>
+            </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
     <%= yield %>
     <%= render 'layouts/footer' %>
 

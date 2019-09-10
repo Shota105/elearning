@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:session][:password])
       log_in(@user)
+      flash[:success] = "Logged In!"
       redirect_to root_url
     else
       flash.now[:danger] = "Invalid credentials."
@@ -16,7 +17,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    redirect_to root_path, notice: 'Loged out'
+    flash[:success] = "Logged Out!"
+    redirect_to root_path
   end
 
 end

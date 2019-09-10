@@ -7,4 +7,9 @@ module UsersHelper
     #     # create image element
     #     image_tag(gravatar_url, alt: user.name)
     # end
+
+    # def admin
+    #     User.find(params[:admin])
+    # end
+
 end
