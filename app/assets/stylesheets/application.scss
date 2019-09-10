@@ -17,4 +17,9 @@
  @import "bootstrap";
  @import "font-awesome";
 
- 
+ .alert-div {
+     position: relative;
+     top: 100px;
+     z-index: 100;
+     color: red;
+ }

@@ -1,0 +1,35 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="row col-12 text-center mb-0">
+            <div class="col-4 profile-left pt-4 mb-0 profile-follow mr-1">
+                <%= image_tag @user.gravatar_url, class: "profile-image" %>
+                <p class="pt-3"><%= "#{@user.first_name} #{@user.last_name}" %></p>
+                <%= render 'follow_form' %> 
+                <div class="row pt-3">
+                    <div class="col-4 border">
+                        <p>Following</p>
+                        <p><%= link_to @user.following.count, following_user_path(@user), class: "follow-text" %></p>
+                    </div>
+                    <div class="col-4 border">
+                        <p>Followers</p>
+                        <p><%= link_to @user.followers.count, followers_user_path(@user), class: "follow-text" %></p>
+                    </div>
+                    <div class="col-4 border">
+                        <p>Lank</p>
+                        <p>100</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row col-8">
+                <% @users.each do |user| %>
+                    <div class="col-4 text-center p-2 mt-2 mb-2 border-bottom">
+                        <%= link_to image_tag(user.gravatar_url, class: "profile-image"), user %>
+                        <p><%= "#{user.first_name} #{user.last_name}" %></p>
+                    </div>
+                <% end %>
+                <%= will_paginate @users %>
+            </div>
+        </div>
+    </div>
+</div>

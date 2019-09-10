@@ -1,0 +1,46 @@
+<div class="profile-height">
+    <div class="jumbotron jumbotron-fluid p-0 mt-4 shadow col-8 offset-2">
+    <div class="">
+        <div class="w-100 m-0 position-relative">
+            <% if current_user.image.blank? %>
+                <%= image_tag "home_image.jpg", class: "w-100 profile-back-image" %>
+            <% else %>
+                <%= image_tag current_user.image_url, class: "w-100 profile-back-image" %>
+            <% end %>
+            <% if current_user == current_user %>
+            <%# <p class="position-absolute bg-image"><%= link_to 'Change the image'  </p>%>
+                <%# <i class="fas fa-camera position-absolute"></i> %>
+            <% end %>
+        </div>
+        <div class="row col-12 text-center mb-0">
+            <div class="col-4 profile-left pt-4 mb-0">
+                <%= image_tag current_user.gravatar_url, class: "profile-image" %>
+                <p class="pt-3"><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+                <%#= render 'follow_form' %> 
+                <div class="row pt-3">
+                    <div class="col-4 border">
+                        <p>Following</p>
+                        <p><%= link_to current_user.following.count, following_user_path(current_user), class: "follow-text" %></p>
+                    </div>
+                    <div class="col-4 border">
+                        <p>Followers</p>
+                        <p><%= link_to current_user.followers.count, followers_user_path(current_user), class: "follow-text" %></p>
+                    </div>
+                    <div class="col-4 border">
+                        <p>Lank</p>
+                        <p>100</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 mb-0 pt-3">
+                <h4 class="">History of learned</h4>
+                <p class="border-bottom text-left">aaaaa</p>
+                <p class="border-bottom text-left">aaaaa</p>
+                <p class="border-bottom text-left">aaaaa</p>
+                <p class="border-bottom text-left">aaaaa</p>
+                <p class="mb-0 border-bottom text-left">aaaaa</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

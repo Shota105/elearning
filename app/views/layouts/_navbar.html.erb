@@ -6,8 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <%= link_to 'Shota-Elearning', root_path, class: "navbar-brand" %>
       <ul class="navbar-nav ml-5 mr-auto mt-2 mt-lg-0">  
-          <%= link_to 'Home', root_path, class: "nav-item nav-link" %>
-          <%= link_to 'About', static_pages_about_path, class: "nav-item nav-link" %>
+          
         <li class="ml-3">
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -17,8 +16,13 @@
       </ul>
       <ul class="navbar-nav">
         <% if logged_in? %>
+          <%= link_to 'Users', users_path, class: "nav-item nav-link" %>
+          <%= link_to 'Profile', user_path(current_user), class: "nav-item nav-link" %>
+          <%= link_to 'Settings', edit_user_path(current_user), class: "nav-item nav-link" %>
           <%= link_to 'Log-Out', session_path(current_user), method: :delete, class: "nav-item nav-link" %>
         <% else %>
+          <%= link_to 'Home', root_path, class: "nav-item nav-link" %>
+          <%= link_to 'About', static_pages_about_path, class: "nav-item nav-link" %>
           <%= link_to 'Sign-Up', signup_path, class: "nav-item nav-link" %>
           <%= link_to 'Log-In', login_path, class: "nav-item nav-link" %>
         <% end %>
