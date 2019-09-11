@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  
+  namespace :admin do
+    resources :users
+    resources :categories
+  end
+
   resources :users, except: :new do
     member do
       get :following, :followers
