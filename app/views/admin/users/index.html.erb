@@ -17,14 +17,16 @@
             <td><%= user.first_name %></td>
             <td><%= user.last_name %></td>
             <td><%= user.email %></td>
-            <td><%= link_to 'Del', admin_user_path(user), method: :delete, class: 'btn btn-danger btn-sm' %></td>
             <% if current_user != user %>
                 <% if user.admin %>
+                    <td><%= link_to 'Del', admin_user_path(user), method: :delete, class: 'btn btn-danger btn-sm' %></td>
                     <td><%= link_to 'Remove', admin_user_path(user, user: {admin: false}), method: :put, class: 'btn btn-danger btn-sm' %></td>
                 <% else %>
+                    <td><%= link_to 'Del', admin_user_path(user), method: :delete, class: 'btn btn-danger btn-sm' %></td>
                     <td><%= link_to 'AA', admin_user_path(user, user: {admin: true}), method: :put, class: 'btn btn-danger btn-sm' %></td>
                 <% end %>
             <% else %>
+                <td></td>
                 <td></td>
             <% end %>
         </tr>

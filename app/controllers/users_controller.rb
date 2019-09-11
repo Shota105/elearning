@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  before_action :require_login, except: [:new, :create]
+  before_action :correct_user, only: [:edit, :create]
+  
   def index
     @users = User.paginate(page: params[:page], per_page: 12)
   end
@@ -59,6 +63,21 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :image)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:info] = "Please log in!"
+      redirect_to login_url
+    end
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      flash[:danger] = "User not authorized"
+      redirect_to root_path
+    end
   end
 
 end
