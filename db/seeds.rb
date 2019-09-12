@@ -9,8 +9,8 @@
 require 'faker'
 
 User.create!(
-    first_name: "Admin",
-    last_name: "Admin",
+    first_name: "Admi",
+    last_name: "nister",
     email: "admin@gmail.com",
     password: "password",
     admin: true

@@ -30,7 +30,7 @@ module Admin
         end
 
         def admin_check
-            unless @user.try(:admin) or current_user.try(:admin)
+            unless @user.try(:admin) || current_user.try(:admin)
                 flash[:danger] = "You are not admin!"
                 redirect_to root_path
             end
