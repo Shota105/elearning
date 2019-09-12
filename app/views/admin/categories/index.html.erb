@@ -15,8 +15,8 @@
             <th scope="row"><%= category.title %></th>
             <td><%= category.description %></td>
             <td>aaaaaaa</td>
-            <td><%= link_to "Category", edit_admin_category_path(category), class: "btn btn-primary" %>
-                <%= link_to "Category", admin_category_path(category), method: :delete, class: "btn btn-danger" %>
+            <td><%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-primary" %>
+                <%= link_to "Delete", admin_category_path(category), method: :delete, class: "btn btn-danger" %>
             </td>
         </tr>
         <% end %>
