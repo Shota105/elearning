@@ -5,7 +5,7 @@
         <tr>
         <th scope="col">Title</th>
         <th scope="col">Description</th>
-        <th scope="col">Create Word</th>
+        <th scope="col">Word Choice Action</th>
         <th scope="col">Category Action</th>
         </tr>
     </thead>
@@ -14,7 +14,9 @@
         <tr>
             <th scope="row"><%= category.title %></th>
             <td><%= category.description %></td>
-            <td>aaaaaaa</td>
+            <td><%= link_to "Create", new_admin_category_word_path(category), class: "btn btn-primary" %>
+                <%= link_to "Edit", admin_category_words_path(category), class: "btn btn-primary" %>
+            </td>
             <td><%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-primary" %>
                 <%= link_to "Delete", admin_category_path(category), method: :delete, class: "btn btn-danger" %>
             </td>
@@ -22,4 +24,5 @@
         <% end %>
     </tbody>
     </table>
+    <%= will_paginate @categories %>
 </div>

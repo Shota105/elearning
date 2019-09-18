@@ -5,7 +5,7 @@ module Admin
         before_action :admin_check, except: [:new, :create]
 
         def index
-            @categories = Category.paginate(page: params[:page], per_page: 10)
+            @categories = Category.paginate(page: params[:page], per_page: 7)
         end
 
         def new

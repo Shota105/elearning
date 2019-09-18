@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <table class="table table-striped table-dark mt-4 mb-4">
+    <thead>
+        <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+            <th scope="row"><%= category.title %></th>
+            <td><%= category.description %></td>
+            <td><%= link_to 'Learn', "#", class: "btn btn-primary" %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+    <%= will_paginate @categories %>
+</div>

@@ -2,8 +2,14 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :users
-    resources :categories
+    resources :categories do
+      resources :words do
+        resources :choices
+      end
+    end
   end
+
+  resources :categories
 
   resources :users, except: :new do
     member do
