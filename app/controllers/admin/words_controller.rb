@@ -39,7 +39,7 @@ module Admin
 
             if @word.update_attributes(word_params)
                 flash[:success] = "Succesfully Update"
-                redirect_to admin_category_words_path
+                redirect_to admin_categories_path
             else
                 render 'edit'
             end
