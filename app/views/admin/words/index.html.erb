@@ -1,0 +1,21 @@
+<div class="container mt-5 pt-1">
+        <table class="table table-striped table-dark mt-4 mb-4">
+        <thead>
+            <tr>
+            <th scope="col">Content</th>
+            <th scope="col">Word Choice Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @words.each do |word| %>
+            <tr>
+                <th scope="row"><%= word.content %></th>
+                <td><%= link_to "Edit", edit_admin_category_word_path(@category,word), class: "btn btn-primary" %>
+                    <%= link_to "Delete", admin_category_word_path(@category,word), method: :delete, class: "btn btn-danger" %>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+</div>
+
+

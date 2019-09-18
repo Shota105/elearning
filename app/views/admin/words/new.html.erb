@@ -1,0 +1,25 @@
+<div class="container">
+    <%= form_for [:admin, @category, @word] do |f| %>
+        <div class="row">
+            <%= render 'shares/error_messages', object: f.object %>
+            <div class="col-6">
+                <div class="form-group">
+                    <%= f.label :Word %>
+                    <%= f.text_field :content, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-6">
+                <%= f.fields_for :choices do |i| %>
+                    <div class="form-group">
+                        <%= i.label :Choice %> <br>
+                        <%= i.text_field :content, class: "form-control" %> <br>
+                        <%= i.check_box :correct, class: "form-control" %>
+                    </div>
+                <% end %>
+                <div class="form-group">
+                    <%= f.submit "Create!", class: "btn btn-block btn-primary" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

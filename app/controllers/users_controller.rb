@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :require_login, except: [:new, :create]
-  before_action :correct_user, only: [:edit, :create]
+  before_action :correct_user, only: [:edit, :update]
   
   def index
     @users = User.paginate(page: params[:page], per_page: 12)
@@ -22,9 +22,7 @@ class UsersController < ApplicationController
       redirect_to login_path
     else
       render "new"
-    end
-    
-
+    end  
   end
 
   def show

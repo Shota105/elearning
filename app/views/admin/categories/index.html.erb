@@ -1,36 +1,30 @@
-<div class="container">
+<div class="container mt-5">
+    <span><%= link_to 'Create new category', new_admin_category_path, class: "btn btn-primary mt-2"%></span>
     <table class="table table-striped table-dark mt-4 mb-4">
     <thead>
         <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Content</th>
-        <th scope="col">Create Word</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Word Choice Action</th>
+        <th scope="col">Word Count</th>
+        <th scope="col">Category Action</th>
         </tr>
     </thead>
     <tbody>
+        <% @categories.each do |category| %>
         <tr>
-            <th scope="row">aaaaaaaaa</th>
-            <td>aaaaaaa</td>
-            <td>aaaaaaa</td>
-            <td>aaaaaa</td>
-            <td>aaaaaa</td>
+            <th scope="row"><%= category.title %></th>
+            <td><%= category.description %></td>
+            <td><%= link_to "Create", new_admin_category_word_path(category), class: "btn btn-primary" %>
+                <%= link_to "Index", admin_category_words_path(category), class: "btn btn-primary" %>
+            </td>
+            <td><%= category.words.count %></td>
+            <td><%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-primary" %>
+                <%= link_to "Delete", admin_category_path(category), method: :delete, class: "btn btn-danger" %>
+            </td>
         </tr>
-         <tr>
-            <th scope="row">aaaaaaaaa</th>
-            <td>aaaaaaa</td>
-            <td>aaaaaaa</td>
-            <td>aaaaaa</td>
-            <td>aaaaaa</td>
-        </tr>
-         <tr>
-            <th scope="row">aaaaaaaaa</th>
-            <td>aaaaaaa</td>
-            <td>aaaaaaa</td>
-            <td>aaaaaa</td>
-            <td>aaaaaa</td>
-        </tr>
+        <% end %>
     </tbody>
     </table>
+    <%= will_paginate @categories %>
 </div>
