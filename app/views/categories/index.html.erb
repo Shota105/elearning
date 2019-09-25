@@ -17,23 +17,26 @@
 
     <div class="row mt-3">
         <% @categories.each do |category| %>
-            <div class="col-4 mt-3 mb-3">
-                <div class="card" style="width: 20rem; height: 220px;">
-                    <div class="card-body">
-                        <h3 class="card-title"><%= category.title %></h3>
-                        <p class="card-text"><%= category.description %></p>
-                        <%= form_for current_user.lessons.build do |f| %>
-                        <%= hidden_field_tag :category_id, category.id %>
-                            <% if lesson(category) && category.words == lesson(category).words %>
-                                <%= link_to "Learnd", lesson_path(lesson(category)), class: 'btn btn-primary btn-block'  %>
-                            <% else %>
-                                <%= f.submit "Learn", class: 'btn btn-primary btn-block' %>
+            <% if category.words.empty? %>
+            <% else %>
+                <div class="col-4 mt-3 mb-3">
+                    <div class="card" style="width: 20rem; height: 220px;">
+                        <div class="card-body">
+                            <h3 class="card-title"><%= category.title %></h3>
+                            <p class="card-text"><%= category.description %></p>
+                            <%= form_for current_user.lessons.build do |f| %>
+                            <%= hidden_field_tag :category_id, category.id %>
+                                <% if lesson(category) && category.words == lesson(category).words %>
+                                    <%= link_to "Learnd", lesson_path(lesson(category)), class: 'btn btn-primary btn-block'  %>
+                                <% else %>
+                                    <%= f.submit "Learn", class: 'btn btn-primary btn-block' %>
+                                <% end %>
                             <% end %>
-                        <% end %>
-                        
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
+            <% end %>
         <% end %>
     </div>
 
