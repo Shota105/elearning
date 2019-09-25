@@ -1,0 +1,35 @@
+<div class="container mt-5 text-center">
+    
+    <h1><%= @lesson.category.title %></h1>
+    <p><%= "Tortal number of correct #{@corrects} / #{@lessons.count}" %></p>
+    <table class="table table-striped table-dark mt-4 mb-4">
+    <thead>
+        <tr>
+            <th scope="col">Result</th>
+            <th scope="col">Choiced Word</th>
+            <th scope="col">Answer Word</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @lessons.each do |lesson| %>
+        <tr>
+            <th scope="row">
+                <% if lesson.choice.correct == true  %>
+                    <span>⭕️</span>
+                <% else %>
+                    <span>❌</span>
+                <% end %>
+            </th>
+            <td><%= lesson.choice.content %></td>
+            <td>
+                <% if lesson.choice.correct == true %>
+                    <%= lesson.choice.content %>
+                <% else %>
+                    <%= lesson.word.word_choices %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+</div>

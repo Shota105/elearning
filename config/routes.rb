@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  
+
+    resources :lessons, shallow: true do
+      resources :answers
+    end
+
+  resources :categories
+
   namespace :admin do
     resources :users
     resources :categories do
@@ -8,8 +14,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  resources :categories
 
   resources :users, except: :new do
     member do

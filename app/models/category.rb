@@ -8,4 +8,8 @@ class Category < ActiveRecord::Base
     accepts_nested_attributes_for :words
 
 
+    has_many :lessons, foreign_key: "category_id", dependent: :destroy
+    has_many :users, through: :lessons
+
+
 end

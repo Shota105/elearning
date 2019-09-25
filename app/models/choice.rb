@@ -2,9 +2,10 @@
 class Choice < ActiveRecord::Base
 
     belongs_to :word
-    # belongs_to :word, class_name:"Word",
-    #                             foreign_key: "id"
-    #                             original: true
+    
+    has_many :answers, dependent: :destroy
+
+    has_many :lessons, through: :answers
 
     validates :content, presence: true
 

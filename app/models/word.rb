@@ -6,6 +6,10 @@ class Word < ActiveRecord::Base
     has_many :choices, dependent: :destroy
     accepts_nested_attributes_for :choices
 
+    has_many :answers, foreign_key: "word_id", dependent: :destroy
+
+    has_many :lessons, through: :answers
+
     validates :content, presence: true
 
     validate :check_checkbox 
@@ -16,6 +20,10 @@ class Word < ActiveRecord::Base
         if options.count > 1 || options.count == 0
             errors.add(:correct, "Should have one correct choice")
         end
+    end
+
+    def word_choices
+        choices.find_by(correct: true).content
     end
 
 end

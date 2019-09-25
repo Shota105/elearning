@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="col-4 offset-4 text-center">
+
+        
+        <h3>Question</h3>
+        <h1><%= @words.first.content %></h1>
+        <p><%= "#{@lesson.words.count+1} / #{@lesson.category.words.count}" %></p>        
+        <% @words.first.choices.each do |choice| %>
+            <%= form_for [@lesson, @answer] do |f| %>
+                <%= f.hidden_field :word_id, value: @words.first.id %>
+                <%= f.hidden_field :lesson_id, value: @lesson.id %>
+                <%= f.hidden_field :choice_id, value: choice.id %>
+                <%= f.submit choice.content, class: 'btn btn-primary btn-block' %>
+                <hr>
+            <% end %>
+        <% end %>
+
+    </div>
+</div>
