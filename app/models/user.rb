@@ -22,6 +22,9 @@ class User < ApplicationRecord
                                      dependent: :destroy
     has_many :followers, through: :passive_relationships, source: :follower
 
+    has_many :lessons, foreign_key: "user_id", dependent: :destroy
+    has_many :categories, through: :lessons
+
     def follow(other_user)
         following << other_user
     end
