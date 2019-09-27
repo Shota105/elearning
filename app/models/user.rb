@@ -47,8 +47,8 @@ class User < ApplicationRecord
                          WHERE followed_id = :user_id"                  
         Activity.where("user_id IN (#{following_ids})
                         OR user_id = :user_id", user_id: id)
-        # Activity.where("user_id IN (#{followed_ids})
-        #                 OR user_id = :user_id", user_id: id)                
+        Activity.where("user_id IN (#{followed_ids})
+                        OR user_id = :user_id", user_id: id)                
     end
 
 end

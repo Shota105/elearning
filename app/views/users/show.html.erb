@@ -13,11 +13,11 @@
             <% end %>
         </div>
         <div class="row col-12 text-center mb-0">
-            <div class="col-4 profile-left pt-4 mb-0">
+            <div class="col-4 profile-left pt-5 mb-0">
                 <%= image_tag @user.gravatar_url, class: "profile-image" %>
-                <p class="pt-3"><%= "#{@user.first_name} #{@user.last_name}" %></p>
+                <p class="pt-5"><%= "#{@user.first_name} #{@user.last_name}" %></p>
                 <%= render 'follow_form' %> 
-                <div class="row pt-3">
+                <div class="row pt-5">
                     <div class="col-4 border">
                         <p>Following</p>
                         <p><%= link_to @user.following.count, following_user_path(@user), class: "follow-text" %></p>
@@ -33,19 +33,10 @@
                 </div>
             </div>
             <div class="col-8 mb-0 pt-3">
-                <h4 class="">History of learned</h4>
+                <h4 class="">Activities</h4>
                 <% if @activities.any? %>
                     <div class="text-left">
-                        <% @activities.each do |activity| %>
-                            <% if activity.actionable_type == "Lesson" %>
-                                <% if @user.id == activity.actionable.user_id %>
-                                    <%= "#{@user.first_name} learned 
-                                            #{activity.actionable.choices.where(correct: true).count} / #{activity.actionable.words.count} words
-                                            in #{activity.actionable.category.title} #{activity.actionable.category.description}" %>
-                                        <hr>
-                                <% end %>
-                            <% end %>
-                        <% end %>
+                        <%= render 'layouts/showActivity' %>
                     </div>
                 <% end %>
             </div>
