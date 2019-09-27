@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+    resources :words, only: :index
   end
   resources :relationships, only: [:create,:destroy]
 
