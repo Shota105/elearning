@@ -2,6 +2,11 @@
 # module Categories
     class LessonsController < ApplicationController
 
+        def index
+            @lessons = Lesson.paginate(page: params[:page], per_page: 10)
+            
+        end
+
         def show
             @lesson = Lesson.find(params[:id])
             @lessons = @lesson.answers.all

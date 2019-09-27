@@ -1,0 +1,41 @@
+<div class="container mt-5 text-center">
+    
+    <h1>Learned word lists</h1>
+    <table class="table table-striped table-dark mt-4 mb-4">
+    <thead>
+        <tr>
+            <th scope="col">Result</th>
+            <th scope="col">Choiced Word</th>
+            <th scope="col">Answer Word</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @lessons.each do |lesson| %>
+            <% if lesson.user_id == current_user.id  %>
+                <% lesson.choices.each do |choice| %>
+                    <tr>
+                        <th scope="row">
+                            <% if choice.correct == true  %>
+                                <span>⭕️</span>
+                            <% else %>
+                                <span>❌</span>
+                            <% end %>
+                        </th>
+                        <td>
+                            <%= choice.content %>
+                        </td>
+                        <td>
+                            <% if choice.correct == true %>
+                                <%= choice.content %>
+                            <% else %>
+                                <%= choice.word.word_choices %>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+            <% end %>
+        <% end %>
+    </tbody>
+    </table>
+    <%= will_paginate @lessons %>
+</div>
