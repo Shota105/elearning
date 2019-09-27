@@ -9,5 +9,6 @@ class Lesson < ActiveRecord::Base
     has_many :words, through: :answers
     has_many :choices, through: :answers
 
+    has_one :activity, as: :actionable, dependent: :destroy
 
 end

@@ -1,0 +1,32 @@
+<div class="text-left">
+    <% @activities.each do |activity| %>
+        <% if activity.actionable_type == "Lesson" %>
+            <% if current_user.id == activity.actionable.user_id %>
+                <%= "#{current_user.first_name} learned 
+                        #{activity.actionable.choices.where(correct: true).count} / #{activity.actionable.words.count} words
+                        in" %>
+                <%= link_to "#{activity.actionable.category.title} #{activity.actionable.category.description}",
+                                lesson_path(activity.actionable.user_id) %>
+                    <hr>
+            <% else %>
+                <%= "#{activity.user.first_name} learned 
+                        #{activity.actionable.choices.where(correct: true).count} / #{activity.actionable.words.count} words
+                        in" %>
+                <%= link_to "#{activity.actionable.category.title} #{activity.actionable.category.description}",
+                                lesson_path(activity.actionable.user_id) %>
+                    <hr>
+            <% end %>
+        <% else %>
+            <% if current_user.id == activity.actionable.follower_id %>
+                <%= "#{current_user.first_name} followed" %>
+                <%= link_to "#{activity.actionable.followed.first_name}", user_path(activity.actionable.followed.id) %>
+                <hr>
+            <% elsif current_user.id == activity.actionable.followed_id %>
+                <%= link_to "#{activity.actionable.follower.first_name}", user_path(activity.actionable.follower.id) %>
+                <%= "followed #{current_user.first_name}" %>
+
+                <hr>
+            <% end %>
+        <% end %>
+    <% end %>
+</div>

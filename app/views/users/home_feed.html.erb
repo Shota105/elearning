@@ -13,11 +13,10 @@
             <% end %>
         </div>
         <div class="row col-12 text-center mb-0">
-            <div class="col-4 profile-left pt-4 mb-0">
+            <div class="col-4 profile-left pt-5 mb-0">
                 <%= image_tag current_user.gravatar_url, class: "profile-image" %>
-                <p class="pt-3"><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
-                <%#= render 'follow_form' %> 
-                <div class="row pt-3">
+                <p class="pt-5"><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+                <div class="row pt-5">
                     <div class="col-4 border">
                         <p>Following</p>
                         <p><%= link_to current_user.following.count, following_user_path(current_user), class: "follow-text" %></p>
@@ -33,12 +32,12 @@
                 </div>
             </div>
             <div class="col-8 mb-0 pt-3">
-                <h4 class="">History of learned</h4>
-                <p class="border-bottom text-left">aaaaa</p>
-                <p class="border-bottom text-left">aaaaa</p>
-                <p class="border-bottom text-left">aaaaa</p>
-                <p class="border-bottom text-left">aaaaa</p>
-                <p class="mb-0 border-bottom text-left">aaaaa</p>
+                <h4 class="">Activities</h4>
+                <div class="pt-2">
+                    <% if @activities.any? %>
+                        <%= render 'layouts/activity' %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>

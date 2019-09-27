@@ -25,12 +25,15 @@ class User < ApplicationRecord
     has_many :lessons, foreign_key: "user_id", dependent: :destroy
     has_many :categories, through: :lessons
 
+    has_many :activities
+
     def follow(other_user)
         following << other_user
     end
 
     def unfollow(other_user)
-        following.delete(other_user)
+        # following.delete(other_user)
+        active_relationships.find_by(followed_id: other_user.id).destroy
     end
 
     def following?(other_user)
@@ -40,6 +43,12 @@ class User < ApplicationRecord
     def feed
         following_ids = "SELECT followed_id FROM relationships
                          WHERE follower_id = :user_id"
+        followed_ids = "SELECT follower_id FROM relationships
+                         WHERE followed_id = :user_id"                  
+        Activity.where("user_id IN (#{following_ids})
+                        OR user_id = :user_id", user_id: id)
+        Activity.where("user_id IN (#{followed_ids})
+                        OR user_id = :user_id", user_id: id)                
     end
 
 end
