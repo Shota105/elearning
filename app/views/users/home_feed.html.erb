@@ -16,7 +16,7 @@
             <div class="col-4 profile-left pt-5 mb-0">
                 <%= image_tag current_user.gravatar_url, class: "profile-image" %>
                 <p class="pt-5"><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
-                <p class="pt-1"><%= link_to "Learned Words", lessons_path(current_user), class: "btn btn-primary"  %></p>
+                <p class="pt-1"><%= link_to "Learned Words", user_words_path(current_user), class: "btn btn-primary"  %></p>
                 <div class="row pt-3">
                     <div class="col-4 border">
                         <p>Following</p>
