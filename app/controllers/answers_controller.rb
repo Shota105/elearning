@@ -10,19 +10,23 @@
                 
                 @corrects = @lesson.choices.where(correct: true).count
                 @lesson.update(result: @corrects)
-                                    
+                @lesson.create_activity(user_id: current_user.id)
+
+                
                 redirect_to lesson_path(@lesson)
             else
                 @answer = @lesson.answers.build
             end
         end
-
+        
         def create
             @lesson = Lesson.find(params[:lesson_id])
             @answer = @lesson.answers.build(answer_params)
+
+            @activity = Activity.new
             
             if @answer.save
-    
+
                 redirect_to new_lesson_answer_path
             end
         end

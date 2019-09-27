@@ -13,6 +13,7 @@
             lesson = category.lessons.build(user_id: current_user.id)
             
             if lesson.save
+
                 redirect_to new_lesson_answer_path(lesson)
             end
         end 

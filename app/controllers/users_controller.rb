@@ -26,7 +26,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
+
+    # @activity = current_user.activities.build
+    @activities = Activity.all.limit(4).order(created_at: :desc)
   end
 
   def edit

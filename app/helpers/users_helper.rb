@@ -12,4 +12,8 @@ module UsersHelper
     #     User.find(params[:admin])
     # end
 
+    def followed_user
+        User.find_by(user_id: current_user.id, followed_id: activity.id)
+    end
+
 end

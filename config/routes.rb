@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-    resources :lessons, shallow: true do
-      resources :answers
-    end
+  resources :lessons, shallow: true do
+    resources :answers
+  end
 
   resources :categories
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create,:destroy]
+
   get 'relationships/create'
   get 'relationships/delete'
   get 'create/delete'
